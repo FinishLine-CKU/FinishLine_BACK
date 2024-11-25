@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+    <h2>회원가입</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <h3>이용약관</h3>
+        <textarea rows="10" cols="50" readonly>
+            여기에 이용약관 내용을 입력하세요...
+        </textarea>
+        <br>
+        <label>
+            <input type="checkbox" name="agree_terms"> 이용약관에 동의합니다.
+        </label>
+        <br><br>
+        <label for="student_id">학번:</label>
+        <input type="text" id="student_id" name="student_id" required>
+        <br>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">학생 인증</button>
+    </form>
+</body>
+</html>
