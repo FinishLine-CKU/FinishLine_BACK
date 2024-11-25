@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+    <h2>회원가입</h2>
+    <form method="post">
+        {% csrf_token %}
+        <h3>이용약관</h3>
+        <textarea rows="12" cols="107" readonly>
+
+   이용약관
+   1.학생 인증시 입력한 비밀번호는  학생 인증 시에만 사용되며 저장되지 않습니다.
+   2.기이수 과목 등록시 첨부한 PDF는 평점을 제외한 강의에 대한 텍스트 정보만을 추출하여 저장됩니다.
+
+   개인정보처리방침
+   제 1조 (수집하는 개인정보 항목)본 사이트는 회원가입 및 학생 인증을 위해 다음과 같은 개인정보를 수집합니다.
+   - 이름, 학과, 학번
+   - 가톨릭관동대학교 포털 아이디 및 비밀번호 (인증 후 저장되지 않음)
+        </textarea>
+        <br>
+        <label>
+            <input type="checkbox" name="agree_terms"> 이용약관 및 개인정보처리방침에 동의합니다.
+        </label>
+        <h3>학생인증</h3>
+        <br><br>
+        <label for="student_id">학번:</label>
+        <input type="text" id="student_id" name="student_id" required>
+        <br>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">학생 인증</button>
+    </form>
+</body>
+</html>
