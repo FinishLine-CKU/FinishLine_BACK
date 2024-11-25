@@ -27,7 +27,7 @@ def signup_step1_view(request):
     #Step 1: 이용약관 및 학생 인증
     if request.method == 'POST':
         student_id = request.POST.get('student_id')
-        password = request.POST.get('password')
+        student_password = request.POST.get('student_password')
         agree_terms = request.POST.get('agree_terms')
 
         # 이용약관 동의 체크 확인
@@ -36,7 +36,7 @@ def signup_step1_view(request):
             return render(request, 'users/signup_step1.html')
 
         # 학생 인증
-        student_data = fake_student_auth(student_id, password)
+        student_data = fake_student_auth(student_id, student_password)
         if student_data:
             # 세션에 인증된 정보 저장
             request.session['student_data'] = student_data
@@ -65,10 +65,11 @@ def signup_step2_view(request):
             user.student_id = student_data['student_id']
             user.real_name = student_data['real_name']
             user.department = student_data['department']
+            user.set_password(form.cleaned_data['password1'])
             user.save()
             login(request,user)  # 로그인 후 이동
             messages.success(request, "회원가입이 완료되었습니다.")
-            return redirect('users/login')  # 로그인 페이지로 이동
+            return redirect('login')  # 로그인 페이지로 이동
         else:
             print(form.errors)
     else:
@@ -81,13 +82,13 @@ def signup_step2_view(request):
     return render(request, 'users/signup_step2.html', {'form': form})
     
 
-def fake_student_auth(student_id,password):
+def fake_student_auth(student_id,student_password):
 
     #학생인증 Test
-    if student_id == "202400020" and password == "password123":
+    if student_id == "202404531" and student_password == "password4":
         return {
-            'student_id': '202400020',
-            'real_name': '김수진',
+            'student_id': '202404531',
+            'real_name': '김예선남',
             'department': '국어교육과'
         }
     return None

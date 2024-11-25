@@ -7,6 +7,17 @@
 </head>
 <body>
     <h2>로그인</h2>
+
+    <!-- 메시지 표시 -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

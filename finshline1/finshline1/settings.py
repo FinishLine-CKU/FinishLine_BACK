@@ -126,7 +126,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = '/users/login/'
-
+LOGIN_REDIRECT_URL='/'
+SIGNUP_STEP2_REDIRECT_URL='login'
 import os
 
 MEDIA_URL = '/media/'

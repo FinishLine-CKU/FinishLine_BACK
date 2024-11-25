@@ -7,7 +7,7 @@ from users.models import User
 class signupationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['real_name', 'student_id','department','additional_major_type', 'sub_major','password1', 'password2']
+        fields = ['real_name', 'student_id','department','additional_major_type', 'sub_major','password1']#,'password2']
 
 
 # 로그인 폼
