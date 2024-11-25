@@ -25,5 +25,8 @@ class User(AbstractUser):
     department = models.CharField(max_length=100, null=True, blank=True)  # 학과
     real_name = models.CharField(max_length=100, null=True, blank=True)  # 이름
 
+    USERNAME_FIELD = 'student_id'  # 학번을 인증에 사용
+    REQUIRED_FIELDS = []  # 추가 필수 필드 없음
+
     def __str__(self):
         return self.real_name

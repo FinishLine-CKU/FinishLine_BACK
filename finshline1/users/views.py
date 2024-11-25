@@ -8,9 +8,9 @@ def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['student_id']
+            student_id = form.cleaned_data['student_id']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, student_id=student_id, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, "로그인 성공!")
@@ -20,6 +20,7 @@ def login_view(request):
     else:
         form = LoginForm()
     return render(request, 'users/login.html', {'form': form})
+
 
 
 def signup_step1_view(request):
@@ -85,10 +86,10 @@ def signup_step2_view(request):
 def fake_student_auth(student_id,student_password):
 
     #학생인증 Test
-    if student_id == "202404531" and student_password == "password4":
+    if student_id == "202404513" and student_password == "password5":
         return {
-            'student_id': '202404531',
-            'real_name': '김예선남',
+            'student_id': '202404513',
+            'real_name': '김예남',
             'department': '국어교육과'
         }
     return None
