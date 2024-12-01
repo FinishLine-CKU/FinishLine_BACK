@@ -18,4 +18,3 @@ class PDFUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = UploadedPDF
         fields = ['id', 'file', 'extracted_text', 'uploaded_at']
-        read_only_fields = ['extracted_text', 'uploaded_at']

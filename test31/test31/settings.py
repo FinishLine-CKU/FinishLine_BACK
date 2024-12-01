@@ -98,8 +98,12 @@ WSGI_APPLICATION = 'test31.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test2',#db명
+        'USER': 'jin2', #db user 이름
+        'PASSWORD': 'rimuru2615@', #db password
+        'HOST': 'localhost', #나중에 aws로 연결
+        'PORT': '3306', #mysql 포트번호
     }
 }
 
@@ -109,17 +113,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.permissions.AllowAny',
     ),
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test2',#db명
-        'USER': 'jin2', #db user 이름
-        'PASSWORD': 'rimuru2615@', #db password
-        'HOST': 'localhost', #나중에 aws로 연결
-        'PORT': '3306', #mysql 포트번호
-    }
 }
 
 
